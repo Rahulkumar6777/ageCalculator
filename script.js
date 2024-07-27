@@ -1,6 +1,15 @@
-const userInput = document.getElementById("date")
-userInput.max = new Date().toISOString().split("T")[0];
+function calculateAge() {
+    const dob = document.getElementById('dob').value;
+    const dobDate = new Date(dob);
+    const now = new Date();
+    
+    let age = now.getFullYear() - dobDate.getFullYear();
+    const monthDiff = now.getMonth() - dobDate.getMonth();
+    const dayDiff = now.getDate() - dobDate.getDate();
 
-function ageCalculate() {
-      
+    if (monthDiff < 0 || (monthDiff === 0 && dayDiff < 0)) {
+        age--;
+    }
+
+    document.getElementById('result').innerText = `Your age is ${age} years.`;
 }
